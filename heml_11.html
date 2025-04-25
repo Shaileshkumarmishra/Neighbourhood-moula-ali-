@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slideshow</title>
+  <style>
+    #slideshow-container {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+    }
+    .slide {
+      position: relative;
+      display: none;
+      width: 100%;
+    }
+    .slide img {
+      width: 100%;
+    }
+    .slide .year {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: red;
+      color: white;
+      padding: 5px;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      background-color: rgba(0, 0, 0, 0);
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .prev {
+      left: 0;
+    }
+    .next {
+      right: 0;
+    }
+    .legend {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+      border-radius: 15px;
+    }
+    .color-box {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="slideshow-container">
+  <div class="slide">
+    <img src="image/soil/soil/5.png" alt="Image 1">
+  </div>
+  <div class="slide">    
+    <img src="image/soil/soil/6.png" alt="Image 2">
+  </div>
+  
+  <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+  <a class="next" onclick="changeSlide(1)">&#10095;</a>
+</div>
+
+<script>
+  let slideIndex = 0;
+  showSlide(slideIndex);
+
+  function changeSlide(n) {
+    showSlide(slideIndex += n);
+  }
+
+  function showSlide(n) {
+    const slides = document.getElementsByClassName("slide");
+    if (n >= slides.length) {slideIndex = 0}
+    if (n < 0) {slideIndex = slides.length - 1}
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex].style.display = "block";
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hyderabad History Timeline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .timeline-container {
+            max-width: 800px;
+            margin: 20px auto;
+           
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 80px;
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .event-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s, filter 0.2s;
+        }
+
+        .event-circle.enlarged {
+            transform: scale(3);
+        }
+
+        .event-circle:hover {
+            filter: brightness(80%);
+        }
+
+        .event-description {
+            position: absolute;
+            left: 70px;
+            top: 0;
+            display: none;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            z-index: -1;
+            margin-top: 135px;
+        }
+
+        .event-description.active {
+            display: block;
+        }
+        h3{
+            text-transform: uppercase;
+        }
+        p{
+           font-size: large;
+
+        }
+    </style>
+</head>
+
+<body>    
+
+    <div class="timeline-container">        
+        <div class="timeline">
+            <div class="event-circle" style="left: -2%; top: 20%; background-image: url('image/icon_history_1.jpg');" onclick="toggleEnlarge(this, 1)"></div>
+            <div class="event-circle" style="left: 18%; top: 30%; background-image: url('image/icon_history_2.jpg');" onclick="toggleEnlarge(this, 2)"></div>
+            <div class="event-circle" style="left: 38%; top: 40%; background-image: url('image/icon_history_3.jpg');" onclick="toggleEnlarge(this, 3)"></div>
+            <div class="event-circle" style="left: 58%; top: 50%; background-image: url('image/icon_history_4.jpg');" onclick="toggleEnlarge(this, 4)"></div>
+            <div class="event-circle" style="left: 78%; top: 60%; background-image: url('image/icon_history_5.jpg');" onclick="toggleEnlarge(this, 5)"></div>
+            <div class="event-circle" style="left: 98%; top: 70%; background-image: url('image/icon_history_6.jpg');" onclick="toggleEnlarge(this, 6)"></div>
+
+            <div id="event-1" class="event-description">
+                <h3 style="text-transform: uppercase;">Early Megalithic period (2500 BC – AD200) :</h3>
+                <h4 style="text-transform: capitalize;">Early Megalithic period 2500 BC – AD200</h4>
+                <p>The excavations carried out in 1935 by  Department of Archaeology of the Nizam’s Dominion,
+                    Suggest the area was inhabited since Megalithic period.<br>
+                    Later the Archeological department of India carried out excavations in the site during 80s.<br><br>
+                    Objects found in  excavations<br><br>
+                    •	Ciarns and Cromleches<br>
+                    •	Iron instruments such as Knives, Daggers<br>
+                    •	Rock wepons, objects<br>
+                    •	Fragments of Human skeleton<br><br>
+                      <img src="image/Picture_1.png" alt="News paper (1983)" style="height: 150px;">   
+                      <img src="image/Picture_2.png" alt="News paper (1983)" style="height: 150px;">   
+                      <img src="image/Picture_3.png" alt="News paper (1983)" style="height: 150px;"><br><br>
+                      Mention on MOulali site in the Report on Proto and early historical cultures of Andhra Pradesh by ASI 1083         
+                    </p>
+            </div>
+
+            <div id="event-2" class="event-description">
+                <h3>Early – pre Medivel era (230 BCE –1512) :</h3>
+                <h4 style="text-transform: capitalize;">Early – pre Medivel era 230 BCE –1512</h4>
+                <p>Shatavahana Dynasty – 230 BCE – 220 CE<br>
+                    ChalukyanEmpire – 6th – 12th Century<br>
+                    Kakatiya Empire – 1083 – 1323<br>
+                    Musunuri Nayakas – 1326 – 1356<br>
+                    Delhi Sultanate 1347 - 1421<br>
+                    Bahamani Sultanate – 1421 – 1512<br><br>
+                    
+                    
+                    Shatavahana, Mourya, Chalukya, Rashtrakuta, Kakatiya, Delhi Sultanate, Bhamani Sultanate<br><br>
+                    Moulali as a part or neighbour of Hyderabd / Secunderabd shares common History with Hyderabad. The area comes under following periods by the artifacts found in different parts of Hyderabad and in the neighbourhood of Hyderabad.
+                    </p>
+            </div>
+
+            <div id="event-3" class="event-description">
+                <h3>Qutub Shahi Era (1512 – 1687) : </h3>
+                <h4 style="text-transform: capitalize;"> Golconda/ Qutub Shahi Sultanate – 1512 – 1687</h4>
+                <p>The existence of this area came with the construction of Moula – ali Dargah on a hill during Qutub Shahi dynasty in the year 1578.<br><br>                    
+                   Qutub shahi sultans began an annual pilgrimage on 17th Rijab to the hill from Golconda, but after sunni Muslims conquered Hyderabad in 1687, the festival temporarily stopped.<br><br>
+                   The site emerged as an important religious and sacred site among Shia sect Muslims in and around Hyderabad.<br><br>
+                   Few studies propose the theory that Hyderabad was named after Hazrat ali Ibn Talib / Moula ali  who was regarded as Hyder (lion in Arabic), due to he presence of his shrine in   Moula Ali.<br><br>
+                   <img src="image/moula_dargh.jpg" alt="Moula Ali dargah " style="height: 150px;"><br>
+                   Moula Ali dargah and kaman site (hill top view)<br><br>
+
+                   <img src="image/Picture_5.jpg" alt="Inside the shrine Moula Ali " style="height: 150px;"><br>
+                   Inside the shrine Moula Ali , intricate interiors made of mirror pieces 
+                    </p>
+            </div>
+
+            <div id="event-4" class="event-description">
+                <h3>Asaf Jhahi Era (1687  – 1950) :</h3>
+                <h4 style="text-transform: capitalize;">Mughal Dynasty -  1687 – 1724<br><br>
+                    Asaf jahi Nizam – 1724 – 1950
+                    </h4>
+                <p>After the fall of Qutub Shahi dynasty the area came in to the rule of Mughal Dynasty until Hyderabad being declared as a
+                     separate state under Asaf Jhah emprorers. Though being Sunni Islam followers Asaf-Jahi dynasties have been a patrons of the shrine and religious and cultural significance.<br><br>
+                    During Asaf Jahah rule the annual piligrimage again by the Nizams , this festival became one of the two important national festivals of Hyderabad State.<br><br>
+                    Different Mosques, Madarsas, facilities were developed by the rulers in view of the public visitibg the shrine and settlements around the hills.<br><br>
+                    By the alliance between Nizam and British established Cantonment (military quarters) in the neighbour and in the Moula ali. <br><br>
+                    Cantonment (military quarters)(1800S) /Railway services:By the alliance between Nizam and British established Cantonment (military quarters) (1883) in the neighbour and in the Moula ali <br><br>
+                    Hyderabad Race Club:  Horse racing in Hyderabad was started by the Nizam Asaf Jah VI in 1868 at Moula-Ali. In those days the races were called Deccan races and later the Hyderabad races.<br><br>
+                    <img src="image/Picture_6.jpg" alt="The Nizam VI " style="height: 150px;"><br>
+                    The Nizam VI riding an elephant in a procession from Moula Ali, circa 1895 with Moula Ali Kaman in the background.<br><br>
+
+                   <img src="image/Picture_7.jpg" alt="View of bazaar " style="height: 150px;"><br>
+                   View of bazaar with Maula Ali Hill in the background., circa 1902. 
+                </p>
+            </div>
+            <div id="event-5" class="event-description">
+                <h3>Post Independence and Modern Era (1950 - current) :</h3>
+                <p>• Industrial Area: During mid 20th century Moula Ali emerged as a breed  ground for the Industries through the establishing several electrical, pharmaceutical, Engineering and Manufacturing, Textile, Auto-mobile and logistics industries, leading to expansion of residential , industrial land use.<br><br>
+                    • Nuclear Fuel Complex(1971)<br><br> 
+                    • ECIL (1967)<br><br>
+                    • Union Carbide(1997), manufacturing Eveready batteries<br><br>
+                    • HMT (1999)<br><br>
+                    • A major training centre for Railway Protection Force, Indian Railways Institute for Signal and
+                     Telecommunication Engineering and the Zonal Training School (ZTS) of South Central Railway are also located here.<br><br>
+                    • During late 20th - early 21st centuary the Expansion of the city in the wake of Urbanisation, the area became inhabited by the settlers from different places. <br>
+
+                     </p>
+            </div>
+
+            <div id="event-6" class="event-description">
+                <h3>Monument details:-</h3>
+                <p>Built in: 1578<br>
+                    Built by: Ibrahim Quli Qutub Shah<br>
+                    Architecture style: Deccani Indo Islamic<br><br>
+                    Existing Structures : <br><br>
+                    •	Moulali Kaman (enterence in the Foot Hill)<br><br>
+                    •	Daragah (on Hill top)<br><br>
+                    •	Final arch (atop the hill leading to the Dargah )<br><br>
+                    •	484 steps  <br><br>
+                    Moula Ali dargah and shia masjid, which are both on top of the hill. The area is maximally inhabited by Shia Muslims.<br><br>
+                    A courtesan named Yaqut , following his dream where a man in green robes appeared in a dream and revealed himself as Maula Ali. 
+Moula ali (husband of Fatima, daughter of the Prophet Mohammed). 
+Yaqut followed him up to the summit of a hill, where he fell down before the Maula Ali, where he found hand prints of Moula – Ali.
+ The hand mark was hewn out of the rock and placed in the great arch built at the site. Later cam e be known as Moula Ali Dargah / Moula – Ali Kaman.
+After the fall of Qutub Shahi dynasty the area came in to the rule of Mughal Dynasty until Hyderabad being declared as a separate state under Asaf Jhah emprorers. Though being Sunni Islam followers Asaf-Jahi dynasties have been a patrons of the shrine and religious and cultural significance.
+During Asaf Jahah rule the annual piligrimage again by the Nizams , this festival became one of the two important national festivals of Hyderabad State.<br>
+
+                    The hill is approximately 614 metres (2,014 ft) tall.<br><br>
+                    It has 484 steps from dargah to bottom of the hill and has about 600 tombs around it.<br><br>
+                    There is another hillock near the Moula Ali hill, called "Qadam -e- Rasul", on which the sacred relics of the prophet were deposited by Mohammad Shakrullah Rahan, a servant of Asaf Jahi.<br><br>
+                    The Moula Ali dargah is located on top of the hill. It was built by Sultan Ibrahim Qutub Shah and  Its interior is decorated with thousands of mirrors and it is one of the 11 heritage sites in Hyderabad, identified by the "Heritage conservation committee" of HUDA. <br><br>
+                     
+                    </p>
+            </div>
+        </div>
+        
+    </div>
+    
+
+    <script>
+        let enlargedCircle = null;
+
+        function toggleEnlarge(circle, eventNumber) {
+            if (enlargedCircle !== null) {
+                enlargedCircle.classList.remove('enlarged');
+            }
+
+            if (enlargedCircle !== circle) {
+                circle.classList.add('enlarged');
+                enlargedCircle = circle;
+            } else {
+                enlargedCircle = null;
+            }
+
+            const eventDescriptions = document.querySelectorAll('.event-description');
+            for (let i = 0; i < eventDescriptions.length; i++) {
+                eventDescriptions[i].classList.remove('active');
+            }
+            document.getElementById('event-' + eventNumber).classList.add('active');
+        }
+    </script> 
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light1",
+      title: {
+        text: "MALE and FEMALE (Population)"
+      },
+      axisX: {
+        valueFormatString: "Age Range"
+      },
+      axisY: {
+        suffix: "",
+        title: ""
+      },
+      toolTip: {
+        shared: true
+      },
+      legend: {
+        cursor: "pointer",
+        itemclick: toggleDataSeries
+      },
+      exportEnabled: true,
+      fullscreen: true, 
+      data: [
+        {
+          type: "stackedBar",
+          name: "FEMALE",
+          showInLegend: true,
+          xValueFormatString: "{label}<br><b>{name}:</b>",
+          yValueFormatString: "#0 ",
+          color: "red", 
+          dataPoints: [
+          { label: "65 year & above", y: 2238 },
+            { label: "60 - 64 year", y: 1438 },
+            { label: "55 - 59 year", y: 1539 },
+            { label: "50 - 54 year", y: 1860 },
+            { label: "45 - 49 year", y: 2413 },
+            { label: "40 - 44 year", y: 2817 },
+            { label: "35 - 39 year", y: 3878 },
+            { label: "30 - 34 year", y: 4247 },
+            { label: "25 - 29 year", y: 5604 },
+            { label: "20 - 24 year", y: 5352 },
+            { label: "15 - 19 year", y: 4497 },
+            { label: "10 - 14 year", y: 4581 },
+            { label: "5 - 9 year", y: 4362 },
+            { label: "0 - 4 year", y: 4163 }
+          ]
+        },
+        {
+          type: "stackedBar",
+          name: "MALE",
+          showInLegend: true,
+          xValueFormatString: "Age Range ##0",
+          yValueFormatString: "##0 ",
+          color: "blue", 
+          dataPoints: [
+          { label: "65 year & above", y: 2192 },
+            { label: "60 - 64 year", y: 1492 },
+            { label: "55 - 59 year", y: 1524 },
+            { label: "50 - 54 year", y: 2018 },
+            { label: "45 - 49 year", y: 2693 },
+            { label: "40 - 44 year", y: 3320 },
+            { label: "35 - 39 year", y: 4178 },
+            { label: "30 - 34 year", y: 4661 },
+            { label: "25 - 29 year", y: 5240 },
+            { label: "20 - 24 year", y: 5003 },
+            { label: "15 - 19 year", y: 4772 },
+            { label: "10 - 14 year", y: 4814 },
+            { label: "5 - 9 year", y: 4634 },
+            { label: "0 - 4 year", y: 4465 }
+          ]
+        }
+      ]
+    });
+    chart.render();
+  
+    function toggleDataSeries(e) {
+      if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+        e.dataSeries.visible = false;
+      } else {
+        e.dataSeries.visible = true;
+      }
+      chart.render();
+    }
+  }
+</script>
+<body>
+  <div id="chartContainer" style="height: 400px; width: 100%;"></div>
+  <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</body>
+</html>         
+
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Popup Slideshow</title>
+  <style>
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .button {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      margin: 0 50px; /* Increased horizontal margin to provide more space */
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+    }
+    .info-box {
+      background-color: #f1f1f1;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      display: none;
+      position: absolute;
+      width: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+
+<div class="button-container">
+  <button class="button" onclick="toggleInfo(1)">1</button>
+  <button class="button" onclick="toggleInfo(2)">2</button>
+  <button class="button" onclick="toggleInfo(3)">3</button>
+  <button class="button" onclick="toggleInfo(4)">4</button>
+  <button class="button" onclick="toggleInfo(5)">5</button>
+  <button class="button" onclick="toggleInfo(6)">6</button>
+</div>
+
+<div id="info1" class="info-box">
+  Information for Button 1
+</div>
+<div id="info2" class="info-box">
+  Information for Button 2
+</div>
+<div id="info3" class="info-box">
+  Information for Button 3
+</div>
+<div id="info4" class="info-box">
+  Information for Button 4
+</div>
+<div id="info5" class="info-box">
+  Information for Button 5
+</div>
+<div id="info6" class="info-box">
+  Information for Button 6
+</div>
+
+<script>
+  function toggleInfo(infoNumber) {
+    var infoBox = document.getElementById("info" + infoNumber);
+    if (infoBox.style.display === "block") {
+      infoBox.style.display = "none";
+    } else {
+      // Hide all other info boxes
+      var infoBoxes = document.getElementsByClassName("info-box");
+      for (var i = 0; i < infoBoxes.length; i++) {
+        infoBoxes[i].style.display = "none";
+      }
+      infoBox.style.display = "block";
+    }
+  }
+
+  // Add event listener to hide info boxes when clicking outside
+  document.body.addEventListener('click', function(event) {
+    var isInsideInfoBox = event.target.closest('.info-box');
+    var isInsideButton = event.target.closest('.button');
+
+    if (!isInsideInfoBox && !isInsideButton) {
+      var infoBoxes = document.getElementsByClassName("info-box");
+      for (var i = 0; i < infoBoxes.length; i++) {
+        infoBoxes[i].style.display = "none";
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport</title>
+    <style>
+        body{
+            text-transform: capitalize;
+        }
+        
+        .main_parts {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            position: relative;
+        }
+
+        .parts {
+            background-color: #cc3333;
+            color:black;
+            padding: 10px; 
+            margin: 5px; 
+            overflow: hidden;
+            position: relative; 
+            border-radius: 15px;
+        }
+
+        .content {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .button {            
+            background-color: #000000;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 100%;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            text-transform: capitalize;
+            font-family: 'Times New Roman', Times, serif;
+            position: absolute;
+            bottom: 0%;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+        p{
+            font-size: larger;
+        }
+        .centered-image {
+            display: block;
+            margin: 0 auto; 
+        }
+        .bottom {
+            margin-top: -80%;
+            background-color: #969696;
+            padding-top: 40%;
+            border-radius: 20px;
+        }
+        h3 {
+            text-transform: uppercase;
+            margin-top: -18%;
+            text-align: center;
+            font-size: 40px;
+        }
+        .p {  
+            margin-top: 0%;
+            text-align: center;
+            font-size: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>     
+    <div class="main_parts">
+        <div class="parts">
+            <div class="content">
+                <img class="centered-image" src="image/electricity.jpg" alt="image_bus_stop" height="120px" >
+                <p>Subhash D serves as the council for the Moula Ali division, which comprises 13 sections.
+                     Within this division, there are 10 sub-stations,
+                      each with an average voltage of 20-25k kilovolts per sub-unit.</p>
+            </div>
+            <button id="electricity" class="button"><span>electricity</span></button>
+        </div>
+        <div class="parts">
+            <div class="content">
+                <img class="centered-image" src="image/bin.jpg" alt="image_metro_stop" height="120px" >
+                <p> There are two drainage channels in Moula Ali. One follows the Ecil route,
+                     while the other follows the Banda Cheruvu path. Both of these drainage channels
+                      eventually merge into the Moosi River.</p>
+            </div>
+            <button id="Drainage" class="button"><span>Drainage</span></button>
+        </div>
+        <div class="parts">
+            <div class="content">
+                <img class="centered-image" src="image/potable.jpg" alt="image_metro_stop" height="100px">
+                <p> In Moula Ali, residents have access to Manjeera water every alternate day for 2 hours.
+                     However, in some areas like Kasturi Nagar, near Moula Ali junction,
+                      the limited provision of Manjeera water poses a significant issue</p>
+            </div>
+            <button id="potable water" class="button"><span>potable water</span></button>
+        </div>
+        <div class="parts">
+            <div class="content">
+                <img class="centered-image" src="image/gas.jpg" alt="image_metro_stop" height="100px" >
+                <p style="overflow: auto; margin-bottom: 20%;"> For cooking, the majority of people use 
+                    gas cylinders, while a few opt for electric stoves. Those using gas cylinders often 
+                    find it to be a more expensive cooking option.</p>
+            </div>
+            <button id="gas" class="button"><span>gas</span></button>
+        </div>
+    </div> 
+       
+    <script>
+        document.getElementById('electricity').addEventListener('click', function() {
+            window.location.href = 'use.html';
+        });
+        document.getElementById('Drainage').addEventListener('click', function() {
+            window.location.href = 'timelap.html';
+        });
+        document.getElementById('potable water').addEventListener('click', function() {
+            window.location.href = 'regulatory_fact.html';
+        });
+        document.getElementById('gas').addEventListener('click', function() {
+            window.location.href = 'ht.html';
+        });
+    </script>
+</body>
+</html>

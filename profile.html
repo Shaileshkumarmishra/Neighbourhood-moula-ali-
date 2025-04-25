@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    <!-- Font Awesome for icons -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container_profile {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #ccc;
+            border-radius: 50%;
+            display: flex; /* Use flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            cursor: pointer; /* Change cursor to pointer */
+        }
+
+        .profile-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        .profile-dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .profile-dropdown-content a:hover {
+            background-color: #ddd;
+            border-radius: 8px;
+        }
+
+        .profile-dropdown:hover .profile-dropdown-content {
+            display: block;
+        }
+
+        .profile-details {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px; /* Set max-width */
+            width: 100%; /* Set width to 100% */
+            margin-top: 10px; /* Adjust margin as needed */
+            margin-left: 75%;
+        }
+
+        .profile-details h2 {
+            margin-top: 0;
+        }
+
+        .profile-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .profile-details li {
+            margin-bottom: 10px;
+        }
+
+        .profile-img {
+            max-width: 100px; /* Adjust the size as needed */
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container_profile">
+        <header>
+            <h1>Welcome to Your Profile</h1>
+            <div class="profile-dropdown">
+                <div class="profile-icon" id="profile-icon">
+                  
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="profile-dropdown-content" id="profile-dropdown-content">
+                    <a href="#" id="profile1">Srimanth</a>
+                    <a href="#" id="profile2">Jagadeshwari</a>
+                    <a href="#" id="profile3">Pradyumna</a>
+                    <a href="#" id="profile4">Srikanth</a>
+                    <a href="#" id="profile5">Shailesh</a>
+                    <a href="#" id="profile6">Thanmai</a>                   
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="profile-details" id="profile1-details">               
+                <img class="profile-img" src="image\TSRTC_LOGO.png" alt="Your Profile Image">
+                <h2>Profile 1 Details</h2>
+                <ul>
+                    <li>Name: John Doe</li>
+                    <li>Email: johndoe@example.com</li>
+                    <li>Location: New York, USA</li>
+                    <li>Occupation: Software Engineer</li>
+                    <li>Interests: Programming, Music, Traveling</li>
+                    <!-- Add more details as needed -->
+                </ul>
+            </section>
+            <section class="profile-details" id="profile2-details">
+                <!-- Your profile details will go here -->
+                <img class="profile-img" src="image\TSRTC_LOGO.png" alt="Your Profile Image">
+                <h2>Profile 2 Details</h2>
+                <ul>
+                    <li>Name: Jane Doe</li>
+                    <li>Email: janedoe@example.com</li>
+                    <li>Location: Los Angeles, USA</li>
+                    <li>Occupation: Graphic Designer</li>
+                    <li>Interests: Art, Photography, Reading</li>
+                    <!-- Add more details as needed -->
+                </ul>
+            </section>
+            <section class="profile-details" id="profile3-details">
+                <img class="profile-img" src="image\TSRTC_LOGO.png" alt="Your Profile Image">
+                <h2>Profile 2 Details</h2>
+                <ul>
+                    <li>Name: Jane Doe</li>
+                    <li>Email: janedoe@example.com</li>
+                    <li>Location: Los Angeles, USA</li>
+                    <li>Occupation: Graphic Designer</li>
+                    <li>Interests: Art, Photography, Reading</li>
+                    <!-- Add more details as needed -->
+                </ul>
+            </section>
+            <section class="profile-details" id="profile4-details">
+                <img class="profile-img" src="image\TSRTC_LOGO.png" alt="Your Profile Image">
+                <h2>Profile 2 Details</h2>
+                <ul>
+                    <li>Name: Jane Doe</li>
+                    <li>Email: janedoe@example.com</li>
+                    <li>Location: Los Angeles, USA</li>
+                    <li>Occupation: Graphic Designer</li>
+                    <li>Interests: Art, Photography, Reading</li>
+                    <!-- Add more details as needed -->
+                </ul>
+            </section>
+            <section class="profile-details" id="profile5-details">
+                <img class="profile-img" src="image\TSRTC_LOGO.png" alt="Your Profile Image">
+                <h2>Profile 2 Details</h2>
+                <ul>
+                    <li>Name: Jane Doe</li>
+                    <li>Email: janedoe@example.com</li>
+                    <li>Location: Los Angeles, USA</li>
+                    <li>Occupation: Graphic Designer</li>
+                    <li>Interests: Art, Photography, Reading</li>
+                    <!-- Add more details as needed -->
+                </ul>
+            </section>
+            <section class="profile-details" id="profile6-details">
+                <img class="profile-img" src="image\TSRTC_LOGO.png" alt="Your Profile Image">
+                <h2>Profile 2 Details</h2>
+                <ul>
+                    <li>Name: Jane Doe</li>
+                    <li>Email: janedoe@example.com</li>
+                    <li>Location: Los Angeles, USA</li>
+                    <li>Occupation: Graphic Designer</li>
+                    <li>Interests: Art, Photography, Reading</li>
+                    <!-- Add more details as needed -->
+                </ul>
+            </section>
+            <!-- Add more profile sections as needed -->
+        </main>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var profileIcon = document.getElementById('profile-icon');
+            var profileDropdownContent = document.getElementById('profile-dropdown-content');
+            var profile1Details = document.getElementById('profile1-details');
+            var profile2Details = document.getElementById('profile2-details');
+            var profile3Details = document.getElementById('profile3-details');
+            var profile4Details = document.getElementById('profile4-details');
+            var profile5Details = document.getElementById('profile5-details');
+            var profile6Details = document.getElementById('profile6-details');
+    
+            profileIcon.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent the click event from propagating to the document body
+                if (profileDropdownContent.style.display === 'none' || profileDropdownContent.style.display === '') {
+                    profileDropdownContent.style.display = 'block';
+                } else {
+                    profileDropdownContent.style.display = 'none';
+                    hideAllProfiles();
+                }
+            });
+    
+            // Event listener for clicks on the document body
+            document.body.addEventListener('click', function() {
+                profileDropdownContent.style.display = 'none';
+                hideAllProfiles();
+            });
+    
+            // Prevent clicks inside the dropdown and profile details sections from hiding them
+            profileDropdownContent.addEventListener('click', function(event) {
+                event.stopPropagation(); // Prevent the click event from propagating to the document body
+            });
+    
+            // Prevent clicks inside the profile details sections from hiding them
+            var profileDetails = document.querySelectorAll('.profile-details');
+            profileDetails.forEach(function(profile) {
+                profile.addEventListener('click', function(event) {
+                    event.stopPropagation(); // Prevent the click event from propagating to the document body
+                });
+            });
+    
+            // Hide profile details initially
+            hideAllProfiles();
+    
+            // Function to hide all profile details sections
+            function hideAllProfiles() {
+                profile1Details.style.display = 'none';
+                profile2Details.style.display = 'none';
+                profile3Details.style.display = 'none';
+                profile4Details.style.display = 'none';
+                profile5Details.style.display = 'none';
+                profile6Details.style.display = 'none';
+            }
+    
+            // Profile links event listeners
+            document.getElementById('profile1').addEventListener('click', function(event) {
+                event.preventDefault();
+                hideAllProfiles();
+                profile1Details.style.display = 'block';
+                profileDropdownContent.style.display = 'none'; // Hide dropdown on profile click
+            });
+    
+            document.getElementById('profile2').addEventListener('click', function(event) {
+                event.preventDefault();
+                hideAllProfiles();
+                profile2Details.style.display = 'block';
+                profileDropdownContent.style.display = 'none'; // Hide dropdown on profile click
+            });
+    
+            document.getElementById('profile3').addEventListener('click', function(event) {
+                event.preventDefault();
+                hideAllProfiles();
+                profile3Details.style.display = 'block';
+                profileDropdownContent.style.display = 'none'; // Hide dropdown on profile click
+            });
+    
+            document.getElementById('profile4').addEventListener('click', function(event) {
+                event.preventDefault();
+                hideAllProfiles();
+                profile4Details.style.display = 'block';
+                profileDropdownContent.style.display = 'none'; // Hide dropdown on profile click
+            });
+    
+            document.getElementById('profile5').addEventListener('click', function(event) {
+                event.preventDefault();
+                hideAllProfiles();
+                profile5Details.style.display = 'block';
+                profileDropdownContent.style.display = 'none'; // Hide dropdown on profile click
+            });
+    
+            document.getElementById('profile6').addEventListener('click', function(event) {
+                event.preventDefault();
+                hideAllProfiles();
+                profile6Details.style.display = 'block';
+                profileDropdownContent.style.display = 'none'; // Hide dropdown on profile click
+            });
+        });
+    </script>
+    
+    
+    
+</body>
+</html>

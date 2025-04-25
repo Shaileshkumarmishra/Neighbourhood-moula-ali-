@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		exportEnabled: true,
+		animationEnabled: true,
+		title: {
+			text: "Land use"
+		},
+		legend: {
+			cursor: "pointer",
+			itemclick: explodePie
+		},
+		data: [{
+			type: "pie",
+			showInLegend: true,
+			toolTipContent: "{name}: <strong>{y}km²</strong>",
+            startAngle: 90,
+			dataPoints: [
+				{ y: 2.873, name: "Heritage", exploded: true, color: "blue" },
+				{ y: 7.511, name: "residential/commercial", color: "red" },
+                { y: 4.02, name: "Hill", color: "lightgreen" },
+                { y: 3.3, name: "Quarters", color: "violet" },
+                { y: 3.3, name: "Railway protection force", color: "skyblue" },
+                { y: 3.3, name: "Industrial", color: "orange" },
+                { y: 3.3, name: "NFC", color: "indigo" }
+			],
+			indexLabel: "{name} - {y}km²",
+			indexLabelFontColor: "black" 
+		}]
+	});
+	chart.render();
+}
+
+function explodePie(e) {
+	if (typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	} else {
+		e.dataSeries.dataPoints[e.dataDataPointIndex].exploded = false;
+	}
+	e.chart.render();
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 400px; width: 100%;"></div>
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

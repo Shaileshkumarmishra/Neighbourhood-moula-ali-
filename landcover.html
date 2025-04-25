@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slideshow</title>
+  <style>
+    #slideshow-container {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+    }
+    .slide {
+      position: relative;
+      display: none;
+      width: 100%;
+    }
+    .slide img {
+      width: 100%;
+    }
+    .slide .year {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: red;
+      color: white;
+      padding: 5px;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .prev {
+      left: 0;
+    }
+    .next {
+      right: 0;
+    }
+    .legend {
+      background-color: red;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+      border-radius: 15px;
+    }
+    .color-box {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="slideshow-container">
+  <div class="slide">
+    <div class="year">2002 landcover</div>
+    <img src="landcover/2002.png" alt="Image 1">
+  </div>
+  <div class="slide">
+    <div class="year">2006 landcover</div>
+    <img src="landcover/2006.png" alt="Image 2">
+  </div>
+  <div class="slide">
+    <div class="year">2010 landcover</div>
+    <img src="landcover/2010.png" alt="Image 3">
+  </div>
+  <div class="slide">
+    <div class="year">2014 landcover</div>
+    <img src="landcover/2014.png" alt="Image 4">
+  </div>
+  <div class="slide">
+    <div class="year">2018 landcover</div>
+    <img src="landcover/2018.png" alt="Image 5">
+  </div>
+  <div class="slide">
+    <div class="year">2022 landcover</div>
+    <img src="landcover/Map.png" alt="Image 6">
+  </div>
+
+  <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+  <a class="next" onclick="changeSlide(1)">&#10095;</a>
+</div>
+
+<div class="legend">
+  <div class="color-box" style="background-color: rgb(124, 216, 244);"></div> Water Bodies
+  <div class="color-box" style="background-color: green;"></div> Forests
+  <div class="color-box" style="background-color: rgb(228, 165, 77);"></div> Urban Areas
+  <div class="color-box" style="background-color: rgb(124, 108, 244);"></div> Industrial Area
+</div>
+
+<script>
+  let slideIndex = 0;
+  showSlide(slideIndex);
+
+  function changeSlide(n) {
+    showSlide(slideIndex += n);
+  }
+
+  function showSlide(n) {
+    const slides = document.getElementsByClassName("slide");
+    if (n >= slides.length) {slideIndex = 0}
+    if (n < 0) {slideIndex = slides.length - 1}
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex].style.display = "block";
+  }
+
+  // Auto slide every 3 seconds
+  setInterval(function() {
+    changeSlide(1);
+  }, 3000);
+</script>
+
+</body>
+</html>

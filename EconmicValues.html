@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+<body>
+    <div class="chart-container">
+        <div class="dropdown">
+            <button onclick="toggleDropdown()" class="dropbtn">Download Chart</button>
+            <div id="downloadOptions" class="dropdown-content">
+                <a href="#" onclick="downloadChart('png')">PNG</a>
+                <a href="#" onclick="downloadChart('jpeg')">JPEG</a>
+                <a href="#" onclick="downloadChart('pdf')">PDF</a>
+            </div>
+        </div>
+        <canvas id="myChart" style="width:100%;max-width:800px; height: 400px; background-color: white;"></canvas>
+    </div>
+
+    <script>
+        const xValues = ["Nov-22", "Dec-22", "Jan-23", "Feb-23", "Mar-23", "Apr-23", "May-23", "Jun-23", "Jul-23", "Aug-23", "Sep-23", "Oct-23"];
+
+        const chart = new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [
+                    { 
+                        data: [5600, 5600, 5600, 5600, 5600, 5600, 5600, 5600, 5600, 5600, 5600, 5600],
+                        borderColor: "red",
+                        fill: false
+                    },
+                    { 
+                        data: [4891, 4891, 4891, 4891, 4891, 4891, 4800, 4800, 4800, 4800, 4800, 4800],
+                        borderColor: "green",
+                        fill: false
+                    },
+                    { 
+                        data: [5500, 5600, 5600, 5567, 5567, 5567, 5500, 5500, 5500, 5567, 5567, 5567],
+                        borderColor: "blue",
+                        fill: false
+                    },
+                    { 
+                        data: [5700, 5700, 5700, 6356, 6356, 6356, 6356, 6356, 6000, 6310, 6310, 6238],
+                        borderColor: "skyblue",
+                        fill: false
+                    },
+                    { 
+                        data: [3800, 3800, 3800, 3800, 3800, 3800, 3800, 3800, 3800, 3800, 3800, 3800],
+                        borderColor: "orange",
+                        fill: false
+                    },
+                    { 
+                        data: [5858, 5858, 5858, 5936, 5000, 5200, 5289, 5317, 5000, 6063, 5600, 5550],
+                        borderColor: "violet",
+                        fill: false
+                    },
+                    { 
+                        data: [4571, 4571, 4571, 4571, 4571, 4571, 4571, 4571, 4571, 6000, 6000, 6000],
+                        borderColor: "indigo",
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                legend: {display: false},
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            fontSize: 12,
+                            fontColor: 'black',
+                            fontStyle: 'bold' // Set the font size for x-axis labels
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            fontSize: 12,
+                            fontColor: 'black',
+                            fontStyle: 'bold' // Set the font size for y-axis labels
+                        }
+                    }]
+                },
+                title: {
+                    display: true,
+                    text: 'Economic Values of Land',
+                    fontSize: 18, // Set the font size for the title
+                    fontColor: 'black', // Set the font color for the title
+                    fontStyle: 'bold', // Set the font style for the title
+                    padding: 20 // Set the padding around the title
+                }
+            }
+        });
+
+        function toggleDropdown() {
+            document.getElementById("downloadOptions").classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function downloadChart(format) {
+            const url = chart.toBase64Image(format);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'chart.' + format;
+            link.click();
+        }
+    </script>
+
+    <style>
+        .chart-container {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: rgb(0, 0, 0);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</body>
+</html>

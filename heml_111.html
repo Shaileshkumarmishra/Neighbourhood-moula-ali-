@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map with Checkboxes</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+        }
+
+        .checkbox-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+    <div class="checkbox-container" id="checkboxContainer">
+        <!-- Checkboxes will be dynamically added here -->
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        var map = L.map('map').setView([17.456023, 78.555663], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        var layers = {};
+       
+        layers.Bank_Atm = L.geoJSON({
+            "type": "FeatureCollection",
+            "features": [
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "SBI ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.569158118217459, 17.471939390728458 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "SBI Moulali" }, "geometry": { "type": "Point", "coordinates": [ 78.560044797737092, 17.462004060100107 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "SBI ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.560029895051628, 17.461948560443876 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "ICIC Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.559632661400997, 17.461715427628654 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "SBI RACPCLCPC" }, "geometry": { "type": "Point", "coordinates": [ 78.554026625136828, 17.452259873542562 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "ICICI Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.562765490533948, 17.451819202569858 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "HDFC ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.564444963950123, 17.452630065809331 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "HDFC Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.56773509568221, 17.451795381958238 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "Union Bank Atm" }, "geometry": { "type": "Point", "coordinates": [ 78.567303918553066, 17.451536001966481 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "SBI Bank Moulalai" }, "geometry": { "type": "Point", "coordinates": [ 78.566792858161193, 17.452090853785588 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "SBI bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.566764706529469, 17.451728251144047 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "INdian ank" }, "geometry": { "type": "Point", "coordinates": [ 78.566632851023442, 17.451788885427835 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "CANARA Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.565376373920557, 17.452341210818414 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "CANARA Bank Kapra" }, "geometry": { "type": "Point", "coordinates": [ 78.565540230854026, 17.452533219383728 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "SBI ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.561519119145146, 17.453814238934847 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "SR LED SIGN Makers" }, "geometry": { "type": "Point", "coordinates": [ 78.561249152214984, 17.453983148725399 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "Sri balaji Traders" }, "geometry": { "type": "Point", "coordinates": [ 78.561029232630105, 17.454016353214136 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "Allahabad Bank Malkajgiri Branch" }, "geometry": { "type": "Point", "coordinates": [ 78.561614130902299, 17.47156119602408 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "Indian Bank" }, "geometry": { "type": "Point", "coordinates": [ 78.561967379743095, 17.471619664797725 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "SBI ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.561709684037012, 17.471660268112764 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "South Indian Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.541892256604569, 17.45812333355185 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "CANARA Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.541944243902037, 17.458188606491994 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "CANARA Bank" }, "geometry": { "type": "Point", "coordinates": [ 78.541892545422897, 17.458209112592659 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "ICICI Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.542164034642951, 17.458087375671106 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "Karur Vysya Bank" }, "geometry": { "type": "Point", "coordinates": [ 78.54608262532534, 17.456958384861228 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "Andhra bank ATM Veda Patashala" }, "geometry": { "type": "Point", "coordinates": [ 78.546728423087131, 17.456980720144578 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "ICICI Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.542643954416789, 17.455555498011933 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "Bank of India" }, "geometry": { "type": "Point", "coordinates": [ 78.543616437789055, 17.465044688072016 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "HDFC Bank" }, "geometry": { "type": "Point", "coordinates": [ 78.562542958973793, 17.469590985256648 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "Karur Vysya Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.568332835636156, 17.474122705139006 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "Andhra Bank" }, "geometry": { "type": "Point", "coordinates": [ 78.563421268018274, 17.461331435182299 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "andhra Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.563525445688512, 17.461257718819127 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "Union Bank of India ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.565025292758548, 17.458012743466153 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "HDFC Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.567528806051399, 17.452646965418083 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "CANARA Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.567870333713614, 17.454708887534846 ] } },
+{ "type": "Feature", "properties": { "id": 2, "Bank name": "AXis Bank ATM" }, "geometry": { "type": "Point", "coordinates": [ 78.562338018810379, 17.457795151956809 ] } }
+]
+        }, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, { radius: 8, fillOpacity: 0.8, color: 'blue' });
+            },
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(feature.properties.name);
+            }
+        });
+
+        layers.churches= L.geoJSON({
+            "type": "FeatureCollection",
+            "features": [
+{ "type": "Feature", "properties": { "id": 2, "name": "Berachar Prayer Hall" }, "geometry": { "type": "Point", "coordinates": [ 78.545519718340174, 17.462569198768598 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "NIssi Ministries" }, "geometry": { "type": "Point", "coordinates": [ 78.549468187710204, 17.46470787687948 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Nissi Church" }, "geometry": { "type": "Point", "coordinates": [ 78.550582291920492, 17.464269817864459 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Christ Gospel Baptist Church" }, "geometry": { "type": "Point", "coordinates": [ 78.569862941012246, 17.461185704251832 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Shalem Prayer House" }, "geometry": { "type": "Point", "coordinates": [ 78.570497875350995, 17.460274870387487 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Calvary Gracxe Fellowship" }, "geometry": { "type": "Point", "coordinates": [ 78.569374178607603, 17.460411906575704 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Gethsamene Prayer Hall" }, "geometry": { "type": "Point", "coordinates": [ 78.570227457272907, 17.459019618903426 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Shiloh Pentecostal Church" }, "geometry": { "type": "Point", "coordinates": [ 78.559668818970962, 17.456469375440726 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "CDA Church" }, "geometry": { "type": "Point", "coordinates": [ 78.555217883577711, 17.458117463997681 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Church of Christ" }, "geometry": { "type": "Point", "coordinates": [ 78.571836718909964, 17.453373727948946 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "St.Josephs Catholic Church" }, "geometry": { "type": "Point", "coordinates": [ 78.564071905895076, 17.47158001332491 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Issac Raj global Ministries" }, "geometry": { "type": "Point", "coordinates": [ 78.564596326257544, 17.46851676918136 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Church of Christ" }, "geometry": { "type": "Point", "coordinates": [ 78.548302183685223, 17.45111664491364 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Shalom church (SFPM)" }, "geometry": { "type": "Point", "coordinates": [ 78.560072137303479, 17.449792976843437 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "New Jerusalem Prayer House" }, "geometry": { "type": "Point", "coordinates": [ 78.567220666718995, 17.451173639937174 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Messiah Church Ministries" }, "geometry": { "type": "Point", "coordinates": [ 78.561153959998535, 17.465792141679305 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "MB Shalom Church" }, "geometry": { "type": "Point", "coordinates": [ 78.554360213326689, 17.470649245568342 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Enhakkore Baptist Church" }, "geometry": { "type": "Point", "coordinates": [ 78.556551980272445, 17.471536563346277 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "evelangical Baptist Church" }, "geometry": { "type": "Point", "coordinates": [ 78.544900010581102, 17.456674380180647 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Evangelical Baptist Church" }, "geometry": { "type": "Point", "coordinates": [ 78.544920998045868, 17.45667389881676 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "CSI St.Peters Church" }, "geometry": { "type": "Point", "coordinates": [ 78.546339545266378, 17.465010800055918 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Jehovah Nissi Bethany Church(JNBC)" }, "geometry": { "type": "Point", "coordinates": [ 78.551808031322082, 17.461782709793059 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "CSI Wesley Church" }, "geometry": { "type": "Point", "coordinates": [ 78.548371309937593, 17.449865993738932 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "St.Phillips Church" }, "geometry": { "type": "Point", "coordinates": [ 78.561506293753595, 17.471986508577725 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "church Of Living God" }, "geometry": { "type": "Point", "coordinates": [ 78.563959620851691, 17.46378417962957 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "The Fire of Jesus Ministries" }, "geometry": { "type": "Point", "coordinates": [ 78.56734894895456, 17.461308589201955 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "God's Grace Ministries" }, "geometry": { "type": "Point", "coordinates": [ 78.560553335955376, 17.461754847350921 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Jehovah Jireh Prayer House" }, "geometry": { "type": "Point", "coordinates": [ 78.5704489999397, 17.455625885698129 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Philadelphia House of Prayer(Herbon)" }, "geometry": { "type": "Point", "coordinates": [ 78.569654945116085, 17.458123171345665 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Daiva Sthuti Church & Ministries" }, "geometry": { "type": "Point", "coordinates": [ 78.57082222240409, 17.457743014233074 ] } }
+]
+}  , {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, { radius: 10, fillOpacity: 0.8, color: 'red' });
+            },
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(feature.properties.name);
+            }
+        });
+          layers.Eductional_Institutes= L.geoJSON({
+            "type": "FeatureCollection",
+            "features":[
+{ "type": "Feature", "properties": { "id": 2, "name": "Sri Durga Nrithya kalanil" }, "geometry": { "type": "Point", "coordinates": [ 78.541639438288641, 17.464084265557627 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Cuemath centre math excel" }, "geometry": { "type": "Point", "coordinates": [ 78.541828920425331, 17.464228271981497 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Navabharathi High school" }, "geometry": { "type": "Point", "coordinates": [ 78.542969602888093, 17.466182915565689 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "PBDAV sschool" }, "geometry": { "type": "Point", "coordinates": [ 78.546484767212164, 17.464575836357934 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Pragathi Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.549032489884183, 17.465540571122354 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "St.Nissi High School2" }, "geometry": { "type": "Point", "coordinates": [ 78.549255808116683, 17.465317794267381 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "College of Hotel Manageme" }, "geometry": { "type": "Point", "coordinates": [ 78.554745105616263, 17.466953295795641 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "St.Nissi High School 3" }, "geometry": { "type": "Point", "coordinates": [ 78.550254920354533, 17.464747182347217 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Peace Tutorials" }, "geometry": { "type": "Point", "coordinates": [ 78.551156313947601, 17.464580438066935 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "VMR Grammer High School" }, "geometry": { "type": "Point", "coordinates": [ 78.551415092408462, 17.46414111019865 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "St.Adam's High school" }, "geometry": { "type": "Point", "coordinates": [ 78.550301884855074, 17.463129681622046 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Colours High School" }, "geometry": { "type": "Point", "coordinates": [ 78.549332413037661, 17.462440914055112 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Eden High School" }, "geometry": { "type": "Point", "coordinates": [ 78.557433586446905, 17.47174232145575 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sri Bala little flower mo" }, "geometry": { "type": "Point", "coordinates": [ 78.559529258878442, 17.472694875225717 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "andrew Wommack Ministries" }, "geometry": { "type": "Point", "coordinates": [ 78.558002574234521, 17.473453074461151 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Xavier Memorial High scho" }, "geometry": { "type": "Point", "coordinates": [ 78.562058574714285, 17.472521634415042 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "DS Trading Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.561901033852124, 17.472155933891241 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Rainbow Primary School" }, "geometry": { "type": "Point", "coordinates": [ 78.56309368855807, 17.471707402604871 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "SRT School" }, "geometry": { "type": "Point", "coordinates": [ 78.564161285053842, 17.471023101402704 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "The little titans school" }, "geometry": { "type": "Point", "coordinates": [ 78.565657659904957, 17.471654867228285 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Masterminds School" }, "geometry": { "type": "Point", "coordinates": [ 78.566201195599547, 17.473331535204945 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Vidya Typing istitute" }, "geometry": { "type": "Point", "coordinates": [ 78.567924941665822, 17.473562703411705 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "easy coding computer" }, "geometry": { "type": "Point", "coordinates": [ 78.568008313805962, 17.473480414026636 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Akshara instute of commer" }, "geometry": { "type": "Point", "coordinates": [ 78.567870803912484, 17.473377552295297 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "oxford hub spoken institu" }, "geometry": { "type": "Point", "coordinates": [ 78.568138244413973, 17.473524806984372 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "sriranga college" }, "geometry": { "type": "Point", "coordinates": [ 78.569085655097282, 17.473223259698276 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Haindavi junior degree co" }, "geometry": { "type": "Point", "coordinates": [ 78.568502050116308, 17.472841047159726 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "SriCHaitanya junior colle" }, "geometry": { "type": "Point", "coordinates": [ 78.566393926001439, 17.471765871378473 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Mother Thererse nursing c" }, "geometry": { "type": "Point", "coordinates": [ 78.561014798830001, 17.468394172100719 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "IZM School" }, "geometry": { "type": "Point", "coordinates": [ 78.558063073173642, 17.463444763346477 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Noor concept school" }, "geometry": { "type": "Point", "coordinates": [ 78.557827167913672, 17.460566123657077 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Noor concept school" }, "geometry": { "type": "Point", "coordinates": [ 78.552505832793472, 17.459510572811382 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Maths Classes" }, "geometry": { "type": "Point", "coordinates": [ 78.55123535506732, 17.457443999422175 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Lalithamma college" }, "geometry": { "type": "Point", "coordinates": [ 78.551745197359097, 17.456849160857271 ] } },
+{ "type": "Feature", "properties": { "id": null, "name": "KYMMA trust" }, "geometry": { "type": "Point", "coordinates": [ 78.556956091462411, 17.457425592586041 ] } },
+{ "type": "Feature", "properties": { "id": null, "name": "vivekananda ITI" }, "geometry": { "type": "Point", "coordinates": [ 78.557920826226848, 17.457223117388565 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "ION Digital" }, "geometry": { "type": "Point", "coordinates": [ 78.55739081762168, 17.455640670858557 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "TCSION" }, "geometry": { "type": "Point", "coordinates": [ 78.557451993282953, 17.455597902033421 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Digital Vidya" }, "geometry": { "type": "Point", "coordinates": [ 78.545727109354175, 17.452402421142779 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "OI Playschool" }, "geometry": { "type": "Point", "coordinates": [ 78.547884092791023, 17.455939646601191 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "MOther theresa school" }, "geometry": { "type": "Point", "coordinates": [ 78.563391446201493, 17.455059502076558 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "St.Pauls High school" }, "geometry": { "type": "Point", "coordinates": [ 78.564790365747697, 17.456449759582224 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Vasundhara Junior Degree" }, "geometry": { "type": "Point", "coordinates": [ 78.565977065300814, 17.455678837974723 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Holy Mother Coeducational" }, "geometry": { "type": "Point", "coordinates": [ 78.567640177083248, 17.454499717707062 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Bharathi Vidya Nikethan" }, "geometry": { "type": "Point", "coordinates": [ 78.568925407347464, 17.453973498744638 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Ratans High school" }, "geometry": { "type": "Point", "coordinates": [ 78.560674272361581, 17.454398209419498 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Kakatiya techno school" }, "geometry": { "type": "Point", "coordinates": [ 78.564088469775655, 17.460841414132823 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Kinder Butterflies School" }, "geometry": { "type": "Point", "coordinates": [ 78.561549679833007, 17.461253402435702 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "sri Dithya Motor Driving" }, "geometry": { "type": "Point", "coordinates": [ 78.561929185483876, 17.463093273982778 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "DAV Public school" }, "geometry": { "type": "Point", "coordinates": [ 78.544153315281122, 17.463995060307067 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Govt school" }, "geometry": { "type": "Point", "coordinates": [ 78.547182728615439, 17.443883629323377 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "ZPHS OU" }, "geometry": { "type": "Point", "coordinates": [ 78.546749085210934, 17.444066953290736 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Akshararambh preschool" }, "geometry": { "type": "Point", "coordinates": [ 78.561439973638258, 17.463658864858626 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Huda Creatrive High Schoo" }, "geometry": { "type": "Point", "coordinates": [ 78.551899780673395, 17.465949310547902 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sharada College" }, "geometry": { "type": "Point", "coordinates": [ 78.558093131199882, 17.461451554456996 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Aditya Spoken English Aca" }, "geometry": { "type": "Point", "coordinates": [ 78.566424474656202, 17.470315511898114 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sri medha Vi Junior Colle" }, "geometry": { "type": "Point", "coordinates": [ 78.568716633297768, 17.473200352053716 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Lucky" }, "geometry": { "type": "Point", "coordinates": [ 78.567795750112907, 17.474193636024633 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "SriAdarsh Junior Degree C" }, "geometry": { "type": "Point", "coordinates": [ 78.569594350083264, 17.47332619695322 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Pragathi Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.568980427960071, 17.472646954246954 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "AECS School Junior COlleg" }, "geometry": { "type": "Point", "coordinates": [ 78.571744904663746, 17.465611059556625 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Gurukul BARC Training sch" }, "geometry": { "type": "Point", "coordinates": [ 78.572704157981249, 17.464324746536569 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Moulali Railway nagar Sch" }, "geometry": { "type": "Point", "coordinates": [ 78.569430820232085, 17.461245086600051 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Ramachandra Tutorials" }, "geometry": { "type": "Point", "coordinates": [ 78.567450190525051, 17.456898298709842 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sanvi Educational Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.566899305048395, 17.456221339940051 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Rishi Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.564770676258092, 17.456283463012046 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Pragathi Vidyalaya High S" }, "geometry": { "type": "Point", "coordinates": [ 78.563001995855501, 17.456803286952677 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "St.Gorge High school" }, "geometry": { "type": "Point", "coordinates": [ 78.561119575416811, 17.45972261454898 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Spoken Eng Home tution" }, "geometry": { "type": "Point", "coordinates": [ 78.559646893180798, 17.458714028203705 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "RMV High School" }, "geometry": { "type": "Point", "coordinates": [ 78.55834596296738, 17.458376919180704 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Jyothi Music Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.561843126490686, 17.455844947209794 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Atomic Energy central sch" }, "geometry": { "type": "Point", "coordinates": [ 78.567496097648103, 17.469752293164582 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Ravi's Study Circle" }, "geometry": { "type": "Point", "coordinates": [ 78.563410620638791, 17.472243182828155 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Anupuram Tutions" }, "geometry": { "type": "Point", "coordinates": [ 78.561907333653878, 17.473676238766522 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sri Gayathri Academy ECIL" }, "geometry": { "type": "Point", "coordinates": [ 78.566997314472061, 17.471070952434676 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Aditya Academy spoken eng" }, "geometry": { "type": "Point", "coordinates": [ 78.566440490760513, 17.470316339824866 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Aurora's Techno Mangment" }, "geometry": { "type": "Point", "coordinates": [ 78.563494897894728, 17.467141953622967 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Integral Foundation Schoo" }, "geometry": { "type": "Point", "coordinates": [ 78.562395182484252, 17.466080008811804 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Bellam Konda sai babu edu" }, "geometry": { "type": "Point", "coordinates": [ 78.562952876946596, 17.466024766098425 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "TMREIS MOULa Ali" }, "geometry": { "type": "Point", "coordinates": [ 78.560440232787755, 17.462372773094039 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "TS Minority Residential S" }, "geometry": { "type": "Point", "coordinates": [ 78.560432524502176, 17.462272950795676 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Rotomaker Academy Moula A" }, "geometry": { "type": "Point", "coordinates": [ 78.560229282705478, 17.46192029673005 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sri harsha Kids High Scho" }, "geometry": { "type": "Point", "coordinates": [ 78.557823390372434, 17.448316640308715 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Marian service" }, "geometry": { "type": "Point", "coordinates": [ 78.555096697308244, 17.452068657306846 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "ZPHS" }, "geometry": { "type": "Point", "coordinates": [ 78.563496951735218, 17.451649330330351 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "SriSai Educational Academ" }, "geometry": { "type": "Point", "coordinates": [ 78.56428952844486, 17.451837489099848 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sanskriti Global Pre-Scho" }, "geometry": { "type": "Point", "coordinates": [ 78.573130825102709, 17.4491337293898 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Hyderabad Math Tutions" }, "geometry": { "type": "Point", "coordinates": [ 78.568238456482604, 17.451187354834708 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Hello Kids Play School" }, "geometry": { "type": "Point", "coordinates": [ 78.56575221023509, 17.452025888481515 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Isha Training Solutions" }, "geometry": { "type": "Point", "coordinates": [ 78.564520756804868, 17.451952140830773 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "SR Kids Zone" }, "geometry": { "type": "Point", "coordinates": [ 78.565690132277822, 17.452531053873596 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "SriRaghava Music Institut" }, "geometry": { "type": "Point", "coordinates": [ 78.565677861053658, 17.452697557541772 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "AnandSai high School" }, "geometry": { "type": "Point", "coordinates": [ 78.562789551757803, 17.452481247140476 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Hello Kids Extensions" }, "geometry": { "type": "Point", "coordinates": [ 78.56099290018237, 17.452597462851042 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Super Kids chess Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.561878954746092, 17.454430928098937 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Gulf Proffesional CAD cen" }, "geometry": { "type": "Point", "coordinates": [ 78.558669307807136, 17.461985310205851 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Govt School" }, "geometry": { "type": "Point", "coordinates": [ 78.55860921490094, 17.462451436262473 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "MBAs Focus" }, "geometry": { "type": "Point", "coordinates": [ 78.56210082930518, 17.471489192812076 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sigma College of Nursing" }, "geometry": { "type": "Point", "coordinates": [ 78.561411114327029, 17.466617742418379 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Govt School" }, "geometry": { "type": "Point", "coordinates": [ 78.557686166205656, 17.471200638586541 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "tagoreVidyanikethan High" }, "geometry": { "type": "Point", "coordinates": [ 78.554851784127422, 17.471360615647786 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "SS Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.5568693628517, 17.473435445046142 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Nursing Hostels" }, "geometry": { "type": "Point", "coordinates": [ 78.555874853995419, 17.472642338765862 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "My Guru Commerce Guru" }, "geometry": { "type": "Point", "coordinates": [ 78.560680213190437, 17.464998689743304 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Smart KIdz Play School" }, "geometry": { "type": "Point", "coordinates": [ 78.542511049853502, 17.458354532616394 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "GreenLap InterNat Play Sc" }, "geometry": { "type": "Point", "coordinates": [ 78.544978857982116, 17.457111458570413 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "fathima Tution point" }, "geometry": { "type": "Point", "coordinates": [ 78.546060097496479, 17.457779591615566 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "SAV High School" }, "geometry": { "type": "Point", "coordinates": [ 78.54666507560249, 17.457633257000484 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Smartkidz Play School" }, "geometry": { "type": "Point", "coordinates": [ 78.545640733297049, 17.456659554173598 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Krishnaveni talent school" }, "geometry": { "type": "Point", "coordinates": [ 78.545846757031498, 17.456069979711273 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Little Springs Play Schoo" }, "geometry": { "type": "Point", "coordinates": [ 78.543406531052341, 17.457182700422489 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "UPS East Anandbagh" }, "geometry": { "type": "Point", "coordinates": [ 78.542607563308536, 17.456107141001659 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "London Kids Pre School" }, "geometry": { "type": "Point", "coordinates": [ 78.54205813459275, 17.458778999272852 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Raising tutuin point" }, "geometry": { "type": "Point", "coordinates": [ 78.544910119222465, 17.458210412275051 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Government Colleges" }, "geometry": { "type": "Point", "coordinates": [ 78.540986040991868, 17.459875546158187 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sun Cricket Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.54148848859451, 17.4626389598366 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Telugu Nilayam" }, "geometry": { "type": "Point", "coordinates": [ 78.542102323795646, 17.462725990423458 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Nalanda High school Nered" }, "geometry": { "type": "Point", "coordinates": [ 78.542524961269521, 17.463656948139139 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Nalanda High School" }, "geometry": { "type": "Point", "coordinates": [ 78.542706852628967, 17.463573383372012 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "SriVenkateshwara Typewrit" }, "geometry": { "type": "Point", "coordinates": [ 78.54177159472944, 17.464457039065145 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sampradaya Music school" }, "geometry": { "type": "Point", "coordinates": [ 78.54332556565069, 17.465456735540776 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Government Primary school" }, "geometry": { "type": "Point", "coordinates": [ 78.551454012267257, 17.460655379688621 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "dunamis School of Music" }, "geometry": { "type": "Point", "coordinates": [ 78.56802534039906, 17.473642111455884 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "CSI Computer Institute" }, "geometry": { "type": "Point", "coordinates": [ 78.569492441187535, 17.473149579948952 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Hyd Autocad Institutes" }, "geometry": { "type": "Point", "coordinates": [ 78.569487049912283, 17.472743693937755 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Gitam Junior College" }, "geometry": { "type": "Point", "coordinates": [ 78.569144318840188, 17.473010369519098 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Patsav Panache school of" }, "geometry": { "type": "Point", "coordinates": [ 78.569154138663109, 17.47273021574949 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Easy Coding Computer Inst" }, "geometry": { "type": "Point", "coordinates": [ 78.56804738686418, 17.473352811772788 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "IAS Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.568103225072548, 17.473398252521669 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Siddhartha Typing drawing" }, "geometry": { "type": "Point", "coordinates": [ 78.566438524416768, 17.472851014011404 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Si&Grp2 Coaching Centre" }, "geometry": { "type": "Point", "coordinates": [ 78.566783180944242, 17.47247567053747 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Narayana Juior College" }, "geometry": { "type": "Point", "coordinates": [ 78.567297518234312, 17.472114888320451 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Kaumudi Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.5662139681734, 17.471033023033296 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "NSK Learning Academy" }, "geometry": { "type": "Point", "coordinates": [ 78.567863602139553, 17.472238117469935 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Akshara Institute of Comm" }, "geometry": { "type": "Point", "coordinates": [ 78.567833516897849, 17.47331276229907 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sri Sai Tution Point" }, "geometry": { "type": "Point", "coordinates": [ 78.564440503353936, 17.460712766035243 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sri Likith Institution" }, "geometry": { "type": "Point", "coordinates": [ 78.564426338846403, 17.459748970278781 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "VMR HolyCross HighSchool" }, "geometry": { "type": "Point", "coordinates": [ 78.564572299276222, 17.457572746808118 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sri Sai tuutin center" }, "geometry": { "type": "Point", "coordinates": [ 78.566224249806126, 17.453471571804684 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "St. Judge's High School" }, "geometry": { "type": "Point", "coordinates": [ 78.559755983038301, 17.460845193747147 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Muralidhar Reddy Tutuion" }, "geometry": { "type": "Point", "coordinates": [ 78.56129141342717, 17.460034697339154 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "swaravipanchi Music acade" }, "geometry": { "type": "Point", "coordinates": [ 78.55977740373018, 17.459219026269608 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Mother Meera High School" }, "geometry": { "type": "Point", "coordinates": [ 78.565125115590362, 17.453065751980855 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Fortune HIgh School" }, "geometry": { "type": "Point", "coordinates": [ 78.565185045391587, 17.453052033110694 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Crayons The School" }, "geometry": { "type": "Point", "coordinates": [ 78.567810885276415, 17.452148513135626 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "Sowmya Tutorials" }, "geometry": { "type": "Point", "coordinates": [ 78.566507833293045, 17.453456138075563 ] } },
+{ "type": "Feature", "properties": { "id": 2, "name": "UCMAS" }, "geometry": { "type": "Point", "coordinates": [ 78.564783347245793, 17.456492340655529 ] } }
+]
+}, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, { radius: 8, fillOpacity: 0.8, color: 'black' });
+            },
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(feature.properties.name);
+            }
+        });
+        layers.petrol_pumps= L.geoJSON({
+            "type": "FeatureCollection",
+            "features":[
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.565684051001767, 17.469352518634345 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.564130403217604, 17.467885032353639 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.56413656984607, 17.467804866183528 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.562001931447881, 17.465167861683913 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.553301475307549, 17.451853332850821 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.575925295626192, 17.448382056760618 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.563248044719373, 17.458708005877696 ] } }
+]
+
+        }, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, { radius: 8, fillOpacity: 0.8, color: 'green' });
+            },
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(feature.properties.name);
+            }
+        });
+
+        layers.petrol_pumps= L.geoJSON({
+            "type": "FeatureCollection",
+            "features":[
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.565684051001767, 17.469352518634345 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.564130403217604, 17.467885032353639 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.56413656984607, 17.467804866183528 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.562001931447881, 17.465167861683913 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.553301475307549, 17.451853332850821 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.575925295626192, 17.448382056760618 ] } },
+{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "Point", "coordinates": [ 78.563248044719373, 17.458708005877696 ] } }
+]
+
+        }, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, { radius: 8, fillOpacity: 0.8, color: 'green' });
+            },
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(feature.properties.name);
+            }
+        });
+
+
+        layers.parks = L.geoJSON({
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": { "id": 1, "name": "Park X" },
+                    "geometry": {
+                        "type": "MultiPolygon",
+                        "coordinates": [
+                           
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": { "id": 2, "name": "Park Y" },
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [
+                                [-5, -5], [-5, -10], [-10, -10], [-10, -5], [-5, -5]
+                            ]
+                        ]
+                    }
+                }
+               
+            ]
+        }, {
+            style: function (feature) {
+                return { color: 'green', fillOpacity: 0.5 };
+            },
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(feature.properties.name);
+            }
+        });
+
+        function toggleLayer(layerName) {
+            var layer = layers[layerName];
+
+            if (document.getElementById(layerName + 'Checkbox').checked) {
+                map.addLayer(layer);
+            } else {
+                map.removeLayer(layer);
+            }
+        }
+
+        var checkboxContainer = document.getElementById('checkboxContainer');
+
+        
+        var checkboxNames = ['Bank_Atm', 'churches', 'Eductional_Institutes', 'petrol_pumps', 'rivers', 'airports', 'libraries', 'restaurants', 'hotels', 'gas_stations'];
+
+        checkboxNames.forEach(function (layerName) {
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = layerName + 'Checkbox';
+            checkbox.checked = false; 
+            checkbox.addEventListener('change', function () {
+                toggleLayer(layerName);
+            });
+
+            var label = document.createElement('label');
+            label.appendChild(checkbox);
+            label.appendChild(document.createTextNode(' ' + layerName.charAt(0).toUpperCase() + layerName.slice(1)));
+            label.style.display = 'block';
+
+            checkboxContainer.appendChild(label);
+        });
+    </script>
+
+</body>
+
+</html>

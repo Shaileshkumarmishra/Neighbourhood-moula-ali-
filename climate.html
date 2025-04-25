@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>   
+</head>
+<style>  
+
+
+
+#slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 895px;
+    margin: 0 auto;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#image-container {
+    display: block;
+}
+
+
+#button-container {
+  margin-top: 5px;
+      cursor: pointer;;
+}
+
+#prevButton, #nextButton {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  margin-left: -10px;
+  margin-right: 0px;
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+#nextButton{
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+#prevButton:hover, #nextButton:hover {
+  background-color: rgba(105, 103, 103, 0.8);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+}
+
+.dropbtn {
+    background-color:  rgb(0, 0, 0);
+    color: white;
+    padding: 10px;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top: 0%;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+</style>
+<body>
+  <div class="dropdown-container">
+    <div class="dropdown">
+        <button class="dropbtn">2011</button>
+        <div class="dropdown-content">
+          <!-- <a href="#" onclick="navigateToImages(['image/wind_speed/1.png'])">Overall</a>           -->
+            <a href="#" onclick="navigateToImages(['image/wind_speed/1.png','image/temperature/1.png','image/Humidity/1.png','image/precipitation/1.png','image/2011.png'])">Prevailing Winds</a>
+            <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+            <a href="#" onclick="navigateToImages(['image/temperature/1.png','image/Humidity/1.png','image/precipitation/1.png','image/2011.png','image/wind_speed/1.png'])">Temperature</a>
+            <a href="#" onclick="navigateToImages(['image/Humidity/1.png','image/precipitation/1.png','image/2011.png','image/wind_speed/1.png','image/temperature/1.png'])">Humidity</a>
+            <a href="#" onclick="navigateToImages(['image/precipitation/1.png','image/2011.png','image/wind_speed/1.png','image/temperature/1.png','image/Humidity/1.png'])">Precipitation</a>
+            <a href="#" onclick="navigateToImages(['image/2011.png','image/wind_speed/1.png','image/temperature/1.png','image/Humidity/1.png','image/precipitation/1.png'])">Cloud Cover</a>             
+        </div>        
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">2012</button>
+        <div class="dropdown-content">
+          <a href="#" onclick="navigateToImages(['image/wind_speed/2.png','image/temperature/2.png','image/Humidity/2.png','image/precipitation/2.png','image/2012.png'])">Prevailing Winds</a>
+          <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+          <a href="#" onclick="navigateToImages(['image/temperature/2.png','image/Humidity/2.png','image/precipitation/2.png','image/2012.png','image/wind_speed/2.png'])">Temperature</a>
+          <a href="#" onclick="navigateToImages(['image/Humidity/2.png','image/precipitation/2.png','image/2012.png','image/wind_speed/2.png','image/temperature/2.png'])">Humidity</a>
+          <a href="#" onclick="navigateToImages(['image/precipitation/2.png','image/2012.png','image/wind_speed/2.png','image/temperature/2.png','image/Humidity/2.png'])">Precipitation</a>
+          <a href="#" onclick="navigateToImages(['image/2012.png','image/wind_speed/2.png','image/temperature/2.png','image/Humidity/2.png','image/precipitation/2.png'])">Cloud Cover</a>  
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">2013</button>
+        <div class="dropdown-content">
+          <a href="#" onclick="navigateToImages(['image/wind_speed/3.png','image/temperature/3.png','image/Humidity/3.png','image/precipitation/3.png','image/2013.png'])">Prevailing Winds</a>
+          <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+          <a href="#" onclick="navigateToImages(['image/temperature/3.png','image/Humidity/3.png','image/precipitation/3.png','image/2013.png','image/wind_speed/3.png'])">Temperature</a>
+          <a href="#" onclick="navigateToImages(['image/Humidity/3.png','image/precipitation/3.png','image/2013.png','image/wind_speed/3.png','image/temperature/3.png'])">Humidity</a>
+          <a href="#" onclick="navigateToImages(['image/precipitation/3.png','image/2013.png','image/wind_speed/3.png','image/temperature/3.png','image/Humidity/3.png'])">Precipitation</a>
+          <a href="#" onclick="navigateToImages(['image/2013.png','image/wind_speed/3.png','image/temperature/3.png','image/Humidity/3.png','image/precipitation/3.png'])">Cloud Cover</a>  
+        </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">2014</button>
+      <div class="dropdown-content">
+        <a href="#" onclick="navigateToImages(['image/wind_speed/4.png','image/temperature/4.png','image/Humidity/4.png','image/precipitation/4.png','image/2014.png'])">Prevailing Winds</a>
+        <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+        <a href="#" onclick="navigateToImages(['image/temperature/4.png','image/Humidity/4.png','image/precipitation/4.png','image/2014.png','image/wind_speed/4.png'])">Temperature</a>
+        <a href="#" onclick="navigateToImages(['image/Humidity/4.png','image/precipitation/4.png','image/2014.png','image/wind_speed/4.png','image/temperature/4.png'])">Humidity</a>
+        <a href="#" onclick="navigateToImages(['image/precipitation/4.png','image/2014.png','image/wind_speed/4.png','image/temperature/4.png','image/Humidity/4.png'])">Precipitation</a>
+        <a href="#" onclick="navigateToImages(['image/2014.png','image/wind_speed/4.png','image/temperature/4.png','image/Humidity/4.png','image/precipitation/4.png'])">Cloud Cover</a>    
+       </div>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">2015</button>
+    <div class="dropdown-content">
+      <a href="#" onclick="navigateToImages(['image/wind_speed/5.png','image/temperature/5.png','image/Humidity/5.png','image/precipitation/5.png','image/2015.png'])">Prevailing Winds</a>
+          <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+          <a href="#" onclick="navigateToImages(['image/temperature/5.png','image/Humidity/5.png','image/precipitation/5.png','image/2015.png','image/wind_speed/5.png'])">Temperature</a>
+          <a href="#" onclick="navigateToImages(['image/Humidity/5.png','image/precipitation/5.png','image/2015.png','image/wind_speed/5.png','image/temperature/5.png'])">Humidity</a>
+          <a href="#" onclick="navigateToImages(['image/precipitation/5.png','image/2015.png','image/wind_speed/5.png','image/temperature/5.png','image/Humidity/5.png'])">Precipitation</a>
+          <a href="#" onclick="navigateToImages(['image/2015.png','image/wind_speed/5.png','image/temperature/5.png','image/Humidity/5.png','image/precipitation/5.png'])">Cloud Cover</a>   
+    </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">2016</button>
+  <div class="dropdown-content">
+    <a href="#" onclick="navigateToImages(['image/wind_speed/6.png','image/temperature/6.png','image/Humidity/6.png','image/precipitation/6.png','image/2016.png'])">Prevailing Winds</a>
+          <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+          <a href="#" onclick="navigateToImages(['image/temperature/6.png','image/Humidity/6.png','image/precipitation/6.png','image/2016.png','image/wind_speed/6.png'])">Temperature</a>
+          <a href="#" onclick="navigateToImages(['image/Humidity/6.png','image/precipitation/6.png','image/2016.png','image/wind_speed/6.png','image/temperature/6.png'])">Humidity</a>
+          <a href="#" onclick="navigateToImages(['image/precipitation/6.png','image/2016.png','image/wind_speed/6.png','image/temperature/6.png','image/Humidity/6.png'])">Precipitation</a>
+          <a href="#" onclick="navigateToImages(['image/2016.png','image/wind_speed/6.png','image/temperature/6.png','image/Humidity/6.png','image/precipitation/6.png'])">Cloud Cover</a> 
+   </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">2017</button>
+  <div class="dropdown-content">
+    <a href="#" onclick="navigateToImages(['image/wind_speed/7.png','image/temperature/7.png','image/Humidity/7.png','image/precipitation/7.png','image/2017.png'])">Prevailing Winds</a>
+    <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+    <a href="#" onclick="navigateToImages(['image/temperature/7.png','image/Humidity/7.png','image/precipitation/7.png','image/2017.png','image/wind_speed/7.png'])">Temperature</a>
+    <a href="#" onclick="navigateToImages(['image/Humidity/7.png','image/precipitation/7.png','image/2017.png','image/wind_speed/7.png','image/temperature/7.png'])">Humidity</a>
+    <a href="#" onclick="navigateToImages(['image/precipitation/7.png','image/2017.png','image/wind_speed/7.png','image/temperature/7.png','image/Humidity/7.png'])">Precipitation</a>
+    <a href="#" onclick="navigateToImages(['image/2017.png','image/wind_speed/7.png','image/temperature/7.png','image/Humidity/7.png','image/precipitation/7.png'])">Cloud Cover</a> 
+  </div>
+</div>
+
+<div class="dropdown">
+  <button class="dropbtn">2018</button>
+  <div class="dropdown-content">
+    <a href="#" onclick="navigateToImages(['image/wind_speed/8.png','image/temperature/8.png','image/Humidity/8.png','image/precipitation/8.png','image/2018.png'])">Prevailing Winds</a>
+          <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+          <a href="#" onclick="navigateToImages(['image/temperature/8.png','image/Humidity/8.png','image/precipitation/8.png','image/2018.png','image/wind_speed/8.png'])">Temperature</a>
+          <a href="#" onclick="navigateToImages(['image/Humidity/8.png','image/precipitation/8.png','image/2018.png','image/wind_speed/8.png','image/temperature/8.png'])">Humidity</a>
+          <a href="#" onclick="navigateToImages(['image/precipitation/8.png','image/2018.png','image/wind_speed/8.png','image/temperature/8.png','image/Humidity/8.png'])">Precipitation</a>
+          <a href="#" onclick="navigateToImages(['image/2018.png','image/wind_speed/8.png','image/temperature/8.png','image/Humidity/8.png','image/precipitation/8.png'])">Cloud Cover</a> 
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">2019</button>
+  <div class="dropdown-content">
+    <a href="#" onclick="navigateToImages(['image/wind_speed/9.png','image/temperature/9.png','image/Humidity/9.png','image/precipitation/9.png','image/2019.png'])">Prevailing Winds</a>
+    <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+    <a href="#" onclick="navigateToImages(['image/temperature/9.png','image/Humidity/9.png','image/precipitation/9.png','image/2019.png','image/wind_speed/9.png'])">Temperature</a>
+    <a href="#" onclick="navigateToImages(['image/Humidity/9.png','image/precipitation/9.png','image/2019.png','image/wind_speed/9.png','image/temperature/9.png'])">Humidity</a>
+    <a href="#" onclick="navigateToImages(['image/precipitation/9.png','image/2019.png','image/wind_speed/9.png','image/temperature/9.png','image/Humidity/9.png'])">Precipitation</a>
+    <a href="#" onclick="navigateToImages(['image/2019.png','image/wind_speed/9.png','image/temperature/9.png','image/Humidity/9.png','image/precipitation/9.png'])">Cloud Cover</a> 
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">2020</button>
+  <div class="dropdown-content">
+    <a href="#" onclick="navigateToImages(['image/wind_speed/10.png','image/temperature/10.png','image/Humidity/10.png','image/precipitation109.png','image/2020.png'])">Prevailing Winds</a>
+    <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+    <a href="#" onclick="navigateToImages(['image/temperature/10.png','image/Humidity/10.png','image/precipitation/10.png','image/2020.png','image/wind_speed/10.png'])">Temperature</a>
+    <a href="#" onclick="navigateToImages(['image/Humidity/10.png','image/precipitation/10.png','image/2020.png','image/wind_speed/10.png','image/temperature/10.png'])">Humidity</a>
+    <a href="#" onclick="navigateToImages(['image/precipitation/10.png','image/2020.png','image/wind_speed/10.png','image/temperature/10.png','image/Humidity/10.png'])">Precipitation</a>
+    <a href="#" onclick="navigateToImages(['image/2020.png','image/wind_speed/10.png','image/temperature/10.png','image/Humidity/10.png','image/precipitation/10.png'])">Cloud Cover</a> 
+  </div>0
+</div>
+<div class="dropdown">
+  <button class="dropbtn">2021</button>
+  <div class="dropdown-content">
+    <a href="#" onclick="navigateToImages(['image/wind_speed/11.png','image/temperature/11.png','image/Humidity/11.png','image/precipitation/11.png','image/2021.png'])">Prevailing Winds</a>
+    <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+    <a href="#" onclick="navigateToImages(['image/temperature/11.png','image/Humidity/11.png','image/precipitation/11.png','image/2021.png','image/wind_speed/11.png'])">Temperature</a>
+    <a href="#" onclick="navigateToImages(['image/Humidity/11.png','image/precipitation/11.png','image/2021.png','image/wind_speed/11.png','image/temperature/11.png'])">Humidity</a>
+    <a href="#" onclick="navigateToImages(['image/precipitation/11.png','image/2021.png','image/wind_speed/11.png','image/temperature/11.png','image/Humidity/11.png'])">Precipitation</a>
+    <a href="#" onclick="navigateToImages(['image/2021.png','image/wind_speed/11.png','image/temperature/11.png','image/Humidity/11.png','image/precipitation/11.png'])">Cloud Cover</a> 
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">2022</button>
+  <div class="dropdown-content">
+    <a href="#" onclick="navigateToImages(['image/wind_speed/12.png','image/temperature/12.png','image/Humidity/12.png','image/precipitation/12.png','image/2022.png'])">Prevailing Winds</a>
+    <!-- <a href="#" onclick="navigateToImages(['image/2011.png'])">Solar Orientation</a> -->
+    <a href="#" onclick="navigateToImages(['image/temperature/12.png','image/Humidity/12.png','image/precipitation/12.png','image/2022.png','image/wind_speed/12.png'])">Temperature</a>
+    <a href="#" onclick="navigateToImages(['image/Humidity/12.png','image/precipitation/12.png','image/2022.png','image/wind_speed/12.png','image/temperature/12.png'])">Humidity</a>
+    <a href="#" onclick="navigateToImages(['image/precipitation/12.png','image/2022.png','image/wind_speed/12.png','image/temperature/12.png','image/Humidity/12.png'])">Precipitation</a>
+    <a href="#" onclick="navigateToImages(['image/2022.png','image/wind_speed/12.png','image/temperature/12.png','image/Humidity/12.png','image/precipitation/12.png'])">Cloud Cover</a>  
+  </div>
+</div>
+<div class="dropdown">
+  <button class="dropbtn">2023</button>
+  <div class="dropdown-content">
+    <a href="#" onclick="navigateToImages(['image/Humidity/2.png','image/20.png'])">Prevailing Winds</a>
+            <a href="#" onclick="navigateToImages(['image/2014.png', 'image/2015.png', 'image/2011.png'])">Solar Orientation</a>
+            <a href="#" onclick="navigateToImages(['image/2011.png', 'image/2016.png', 'image/2011.png'])">Temperature</a>
+            <a href="#" onclick="navigateToImages(['image/Humidity/2.png','image/20.png'])">Humidity</a>
+            <a href="#" onclick="navigateToImages(['image/2011.png', 'image/2016.png', 'image/2011.png'])">Precipitation</a>
+            <a href="#" onclick="navigateToImages(['image/2011.png', 'image/2016.png', 'image/2011.png'])">Cloud Cover</a> 
+  </div>
+</div>
+</div>
+
+    <div id="slideshow-container">
+        <div id="image-container">       
+        </div>        
+    </div>
+    <div id="button-container">
+      <button id="prevButton" onclick="prevImage()">&#10094;</button>
+      <button id="nextButton" onclick="nextImage()"> &#10095;</button>
+  </div>
+
+    <script>
+
+function showImage(index) {
+            const imageContainer = document.getElementById("image-container");
+            imageContainer.innerHTML = '';
+
+            const imgElement = document.createElement("img");
+            imgElement.src = currentImageSet[index];
+            imgElement.alt = "Slideshow Image";
+            
+            imgElement.width = 600;
+            imgElement.height = 400;
+
+            imageContainer.appendChild(imgElement);
+        }
+
+        let currentImageIndex = 0;
+        let currentImageSet = [];
+
+        function navigateToImages(imagePaths) {
+            currentImageSet = imagePaths;
+            currentImageIndex = 0;
+
+            showImage(currentImageIndex);
+        }
+
+        function showImage(index) {
+            const imageContainer = document.getElementById("image-container");
+            imageContainer.innerHTML = '';
+
+            const imgElement = document.createElement("img");
+            imgElement.src = currentImageSet[index];
+            imgElement.alt = "Slideshow Image";
+
+            
+            imgElement.width = 895;
+            imgElement.height = 634;
+
+            imageContainer.appendChild(imgElement);
+        }
+
+        function prevImage() {
+            currentImageIndex--;
+            if (currentImageIndex < 0) {
+                currentImageIndex = currentImageSet.length - 1;
+            }
+            showImage(currentImageIndex);
+        }
+
+        function nextImage() {
+            currentImageIndex++;
+            if (currentImageIndex >= currentImageSet.length) {
+                currentImageIndex = 0;
+            }
+            showImage(currentImageIndex);
+        }
+
+ 
+    </script>
+</body>
+</html>

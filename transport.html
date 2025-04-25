@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport</title>
+    <style>
+        body{
+            text-transform: capitalize;
+        }
+        
+        .main_parts {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            position: relative;
+        }
+
+        .parts {
+            background-color: #cc3333;
+            color:black;
+            padding: 10px; 
+            margin: 5px; 
+            overflow: hidden;
+            position: relative; 
+            border-radius: 15px;
+        }
+
+        .content {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .button {            
+            background-color: #000000;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 100%;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            text-transform: capitalize;
+            font-family: 'Times New Roman', Times, serif;
+            position: absolute;
+            bottom: 0%;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+        p{
+            font-size: larger;
+        }
+        .centered-image {
+            display: block;
+            margin: 0 auto; 
+        }
+        .bottom {
+            margin-top: -20%;
+            background-color: #969696;
+            padding-top: 40%;
+            border-radius: 20px;
+        }
+        h3 {
+            text-transform: uppercase;
+            margin-top: -18%;
+            text-align: center;
+            font-size: 40px;
+        }
+        .p {  
+            margin-top: 0%;
+            text-align: center;
+            font-size: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>     
+    <div class="main_parts">
+        <div class="parts">
+            <div class="content">
+                <img class="centered-image" src="image/TSRTC_LOGO.png" alt="image_bus_stop" height="120px" >
+                <p>Moula-Ali has well-connected buses operated by (TSRTC),
+                which ply on two routes covering most of the area. 
+                Kushaiguda Bus Depot is located adjacent to Moula-Ali.</p>
+            </div>
+            <button id="busStop" class="button"><span>Bus Stop</span></button>
+        </div>
+        <div class="parts">
+            <div class="content">
+                <img class="centered-image" src="image/metro_logo.png" alt="image_metro_stop" height="120px" >
+                <p> Tarnaka Metro station which is 5 kilometres.</p>
+            </div>
+            <button id="metroStation" class="button"><span>Metro Station</span></button>
+        </div>
+        <div class="parts">
+            <div class="content">
+                <img class="centered-image" src="image/airport_logo.png" alt="image_metro_stop" height="100px">
+                <p> Hyderabad International Airport is 55 km.</p>
+            </div>
+            <button id="airport" class="button"><span>Airport</span></button>
+        </div>
+        <div class="parts">
+            <div class="content">
+                <img class="centered-image" src="image/indian_logo (1).png" alt="image_metro_stop" height="100px" >
+                <p style="overflow: auto; margin-bottom: 20%;"> Moual ali , Moual ali by pass Cabin and Moula Ali C Cabin railway 
+                station around 2 km from the center of Moula-Ali.
+                It the first station encountered while travelling from Secunderabad.
+                 However, most of the major trains do not have a stop here.
+                <br><br>The nearest MMTS Train station is Sitaphalmandi Railway Station (6.7 km).</p>
+            </div>
+            <button id="railwayStation" class="button"><span>Railway station</span></button>
+        </div>
+    </div> 
+    <div class="bottom">
+        <h3>Transport</h3>
+        <p class ="p">
+            Regarding road conditions, there are challenges in safely crossing roads,
+            as exemplified by the situation at the ECIL Junction. In this location, there 
+            is a lack of proper facilities for pedestrians to safely cross the road, which has contributed to accidents.<br><br>
+        
+            Accidents are a recurring issue at both the ECIL junction and Moula Ali junction, 
+            particularly in areas near educational institutions such as Kamala Nagar. These accidents 
+            often take place during the evening peak hours, primarily attributed to inadequate road conditions in the vicinity.
+        </p>
+    </div>   
+    <script>
+        document.getElementById('busStop').addEventListener('click', function() {
+            window.location.href = 'more_info.html';
+        });
+        document.getElementById('metroStation').addEventListener('click', function() {
+            window.location.href = 'more_info.html';
+        });
+        document.getElementById('airport').addEventListener('click', function() {
+            window.location.href = 'more_info.html';
+        });
+        document.getElementById('railwayStation').addEventListener('click', function() {
+            window.location.href = 'more_info.html';
+        });
+    </script>
+</body>
+</html>

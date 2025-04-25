@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		exportEnabled: true,
+		animationEnabled: true,
+		title: {
+			text: "Residential Sub- Divisions /Divison (landcover)"
+		},
+		legend: {
+			cursor: "pointer",
+			itemclick: explodePie
+		},
+		data: [{
+			type: "pie",
+			showInLegend: true,
+			toolTipContent: "{name}: <strong>{y}%</strong>",
+            startAngle: 90,
+			dataPoints: [
+				{ y: 16, name: "Old Moula ali", exploded: true, color: "blue" },
+				{ y: 19, name: "IDA Moula ali/ Meerpet", color: "red" },
+                { y: 2, name: "ECIL Extension", color: "green" },
+                { y: 5, name: "Upparguda", color: "violet" }
+			],
+			indexLabel: "{name} - {y}%",
+			indexLabelFontColor: "black" 
+		}]
+	});
+	chart.render();
+}
+
+function explodePie(e) {
+	if (typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	} else {
+		e.dataSeries.dataPoints[e.dataDataPointIndex].exploded = false;
+	}
+	e.chart.render();
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 400px; width: 100%;"></div>
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

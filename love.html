@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Falling Hearts</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f7f7f7;
+    }
+
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #ff4d4d;
+        transform: rotate(45deg);
+        animation: fall-small 5s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #ff4d4d;
+        border-radius: 50%;
+    }
+
+    .heart::before {
+        top: -10px;
+        left: 0;
+    }
+
+    .heart::after {
+        top: 0;
+        left: -10px;
+    }
+
+    .big-heart {
+        width: 40px;
+        height: 40px;
+        animation: fall-big 3s linear infinite;
+    }
+
+    .big-heart::before,
+    .big-heart::after {
+        width: 40px;
+        height: 40px;
+    }
+
+    @keyframes fall-small {
+        0% {
+            transform: translateY(-100vh) rotate(45deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh) rotate(720deg);
+            opacity: 0;
+        }
+    }
+
+    @keyframes fall-big {
+        0% {
+            transform: translateY(-100vh) rotate(45deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh) rotate(720deg);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+<script>
+    function createHeart() {
+        const heart = document.createElement('div');
+        if (Math.random() < 0.5) {
+            heart.className = 'heart';
+            heart.style.animationDuration = (Math.random() * 4 + 2) + 's'; 
+        } else {
+            heart.className = 'big-heart';
+            heart.style.animationDuration = (Math.random() * 2 + 1) + 's'; 
+        }
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+
+    setInterval(createHeart, 200); 
+</script>
+</body>
+</html>

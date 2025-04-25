@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bi-Directional Slideshow</title>
+  <style>
+    #slider-container {
+      width: 95%; /* Adjusted width to accommodate four images */
+      overflow: hidden;
+      position: relative;
+    }
+
+    #image-slider {
+      display: flex;
+      transition: transform 0.8s ease-in-out;
+    }
+
+    .image {
+      width: 250px; 
+      flex: 0 0 auto;
+      padding: 10px;
+    }
+
+    button {
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .text{ background-color: rgb(0, 0, 0); 
+        color: rgb(255, 253, 253);
+        text-align: center;
+        padding: 10px; 
+
+    }
+    .button-container {
+  position: absolute;
+  top: 25%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+}
+
+.prev, .next {
+  cursor: pointer;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  user-select: none;
+}
+
+.prev {
+  margin-left: 10px;
+}
+
+.next {
+  margin-right: 10px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+  
+  </style>
+</head>
+<body>
+
+<div id="slider-container">
+  <div id="image-slider">
+    <div  class="text">
+    <img class="image" src="image/Picture_8.jpg" alt="Image 1">
+    A painting from British chronicles 1793
+</div>
+<div class="text">
+    <img class="image" src="image/Picture_9.jpg" alt="Image 2">
+    Moula ali in 1875 
+</div>
+<div class="text">
+    <img class="image" src="image/Picture_10.jpg" alt="Image 3">
+    View of bazaar with Maula Ali Hill in the background., circa 1902
+</div>
+<div class="text">
+    <img class="image" src="image/Picture_11.jpg" alt="Image 4">
+    Moulali Kaman 
+</div>
+<div class="text">
+    <img class="image" src="image/Picture_13.jpg" alt="Image 6">
+    Moula Ali Kaman early 2000
+</div>
+<div class="text">
+    <img class="image" src="image/Picture_14.jpg" alt="Image 1">
+    Moula Ali Dragah atop hill
+</div> 
+<div class="text">
+    <img class="image" src="image/Picture_15.jpg" alt="Image 2">
+    Interior works
+</div>
+<div class="text">
+    <img class="image" src="image/Picture_16.jpg" alt="Image 3">
+    The final arch atop the hill leading to the Dargah
+</div>
+<div class="text">
+    <img class="image" src="image/Picture_17.jpg" alt="Image 4">
+    View from hill
+</div> 
+<div class="text">
+    <img class="image" src="image/Picture_18.jpg" alt="Image 5">
+    Serpentine Road up the hill laid for vehicles
+</div> 
+<div class="text">
+    <img class="image" src="image/Picture_19.jpg" alt="Image 6">
+    Moula Ali hill
+</div> 
+</div>
+<div class="button-container">
+    <a class="prev" onclick="prev_slides()">❮</a>
+    <a class="next" onclick="next_slides()">❯</a>
+  </div>
+
+<script>
+ 
+ const imageSlider = document.getElementById('image-slider');
+  const totalImages = imageSlider.children.length;
+  let currentIndex = 0;
+  let slideInterval;
+
+  function startAutoSlide() {
+    slideInterval = setInterval(next_slides, 2000); // Change slide every 2 seconds
+  }
+
+  function stopAutoSlide() {
+    clearInterval(slideInterval);
+  }
+
+  function next_slides() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    updateSlider();
+  }
+
+  function prev_slides() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    updateSlider();
+  }
+
+  function updateSlider() {
+    const translateValue = -currentIndex * 270; /* Adjusted translation */
+    imageSlider.style.transform = `translateX(${translateValue}px)`;
+  }
+
+  // Start auto sliding when the page loads
+  startAutoSlide();
+
+  // Pause auto sliding when the mouse hovers over the slider container
+  document.getElementById('slider-container').addEventListener('mouseover', stopAutoSlide);
+
+  // Resume auto sliding when the mouse leaves the slider container
+  document.getElementById('slider-container').addEventListener('mouseout', startAutoSlide);
+
+
+</script>
+
+</body>
+</html>

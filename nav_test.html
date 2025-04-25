@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Fixed Menu with Dropdown</title>
+</head>
+<style>
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    padding: 15px;
+}
+
+.menu-item:hover .dropdown-content {
+    display: block;
+}
+
+</style>
+<body>
+
+<div class="navbar">
+    <div class="menu-item">
+        <a href="#">Home</a>
+    </div>
+    <div class="dropdown menu-item">
+        <a href="#">Services</a>
+        <div class="dropdown-content">
+            <a href="#">Service 1</a>
+            <a href="#">Service 2</a>
+            <a href="#">Service 3</a>
+        </div>
+    </div>
+    <div class="dropdown menu-item">
+        <a href="#">Products</a>
+        <div class="dropdown-content">
+            <a href="#">Product 1</a>
+            <a href="#">Product 2</a>
+            <a href="#">Product 3</a>
+        </div>
+    </div>
+    <div class="menu-item">
+        <a href="#">Contact</a>
+    </div>
+</div>
+<div class="information" id="introduction">    
+    <h2>introduction</h2>
+    <h3>moual ali</h3>
+    <div class="container">
+      <div class="image-container">
+        <video width="500" height="360"  controls>
+          <source src="video/earth.mp4" type="video/mp4"  width="300px" height="500px">
+        </video>
+      </div>
+      <div class="text-container" style="text-transform: none;">
+        <p style="text-transform: none; text-align: center;">
+          Moula-Ali commonly known as Moula Ali .
+           It is a well-developed industrial and urban area in Malkajgiri Mandal,
+            of the Medchal-Malkajgiri district, It is a part of Greater Hyderabad and also 
+            a part of Hyderabad Metropolitan Region of the Indian state of Telangana, 
+            This area is well connected with rail transportation through the Moula Ali Railway Station.
+           It is noted for its Moula Ali hill, on top of which stands the Moula Ali Dargah and mosque, dedicated to Ali.
+        </p>
+             </div>
+     </div> 
+     <h3>- moula ali population -</h3>
+     <p style="text-transform: capitalize; color: #e9e4e9;">Total area = 11.09 km²</p>
+    <p style="text-transform: capitalize;  color:  #dbc8db;">Population (2020) = 99993</p> 
+     <p style="text-transform: capitalize; color: #dbc8db;">Population Density = 9016 people per km²</p>
+      
+     
+     <div class="container">
+      <div class="image-container">
+        <iframe src="population.html" width="500px" height="415px" scrolling="no" ></iframe> 
+      </div>
+      <div class="text-container">
+        <iframe src="male_female.html" width="800px" height="415px" scrolling="no" ></iframe> 
+             </div>
+     </div> 
+     <iframe src="Tran.html" width="100%" height="780px" scrolling="no" style="border: none; margin-top: 10%;"></iframe>
+    
+    <br>              
+      <iframe src="slide_show.html" width="1020" height="525" scrolling="no" style="border: none;"></iframe>
+      <!-- <iframe src="https://www.google.com/maps/d/embed?mid=11VPbW2MCNvz-rym7tM4OFlS52U30Ti8&ehbc=2E312F" width="640" height="480"></iframe> -->
+    
+</div>
+
+</body>
+</html>
